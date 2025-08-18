@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}ECOURS - Enseignant Python{% endblock %}
+
+{% block page_title %}Enseignant{% endblock %}
+{% block breadcrumb %}Enseignant{% endblock %}
+
+{% block content %}
+    
+    <div class="section">
+        <div class="container">
+            <div style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+                <div class="teacher-card" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <img class="teacher-photo" src="{{ url_for('static', filename='img/selim_Kairouani.png') }}" alt="Photo de l'enseignant">
+                    <h2>M. Kairouani</h2>
+                        <h5>Enseignant de Python</h5>
+                        <p>M. Kairouani enseigne le langage Python au Collège du Sud à Bulle. Il a pour objectif de rendre la programmation accessible à tous les élèves grâce à des exemples concrets, des exercices pratiques et une approche progressive.</p>
+                        <p>Les élèves sont invités à le contacter en cas de question ou de difficulté rencontrée durant le cours.</p>
+                        <ul>
+                            <li><i class="fa fa-envelope"></i> <a href="mailto:contact.ecours@edufr.ch?subject=Question sur le cours Python">contact.ecours@edufr.ch</a></li>
+                            <li><i class="fa fa-map-marker-alt"></i> Rue de Dardens 79, 1630 Bulle, Suisse</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

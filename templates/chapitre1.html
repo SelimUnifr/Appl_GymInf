@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block title %}Chapitre 1 - Les Entrées/Sorties - Cours Python CSUD{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="chapter-content-page">
+        <h1 class="text-center mb-4">Chapitre 1 : Les Entrées/Sorties</h1>
+        
+        <div class="row">
+            <div class="col-12">
+                
+                <h2>Introduction</h2>
+                <p>Les entrées et sorties sont fondamentales en programmation. Elles permettent à votre programme de communiquer avec l'utilisateur : recevoir des informations (entrées) et afficher des résultats (sorties).</p>
+                
+                <div class="info-box">
+                    <h4>💻 Zone de programmation</h4>
+                    <p>Tu peux utiliser l'espace Python ci-dessous pour écrire ton code, l'essayer et voir tout de suite si ton programme fonctionne.</p>
+                    <iframe src="https://webtigerpython.ethz.ch/" width="100%" height="400" style="border: 1px solid #ccc; border-radius: 5px; margin: 15px 0;"></iframe>
+                </div>
+                
+                <h3>1. Exemples basiques - Les sorties avec print()</h3>
+                
+                <div class="code-example">
+                    <h4>Afficher un texte simple :</h4>
+                    <pre><code>print("Bonjour")</code></pre>
+                    <p><strong>Résultat :</strong></p>
+                    <pre><code>Bonjour</code></pre>
+                </div>
+                
+                <div class="code-example">
+                    <h4>Afficher texte et variables :</h4>
+                    <pre><code>age = 25
+print("J'ai", age, "ans")</code></pre>
+                    <p><strong>Résultat :</strong></p>
+                    <pre><code>J'ai 25 ans</code></pre>
+                </div>
+                
+                <div class="code-example">
+                    <h4>Afficher plusieurs éléments :</h4>
+                    <div class="code-block">
+                        <pre>nom = "Alice"
+age = 20
+print("Bonjour", nom, ", vous avez", age, "ans")</pre>
+                    </div>
+                    <p><strong>Résultat :</strong></p>
+                    <div class="code-block">
+                        <pre>Bonjour Alice , vous avez 20 ans</pre>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Afficher avec f-string (recommandé) :</h4>
+                    <div class="code-block">
+                        <pre>nom = "Alice"
+age = 20
+print(f"Bonjour {nom}, vous avez {age} ans")</pre>
+                    </div>
+                    <p><strong>Résultat :</strong></p>
+                    <div class="code-block">
+                        <pre>Bonjour Alice, vous avez 20 ans</pre>
+                    </div>
+                    <p><strong>Explication :</strong> Il est préférable d'utiliser les f-strings avec print car elles rendent le code plus lisible en intégrant directement les variables dans le texte</p>
+                </div>
+                
+                <h3>2. Exemples basiques - Les entrées avec input()</h3>
+                
+                <p><strong>Important :</strong> La fonction <code>input()</code> retourne toujours une chaîne de caractères (string), même si l'utilisateur tape un nombre.</p>
+                
+                <div class="example-box">
+                    <h4>Demander un texte :</h4>
+                    <div class="code-block">
+                        <pre>nom = input("Votre nom : ")
+print("Bonjour", nom)</pre>
+                    </div>
+                    <p><strong>Résultat :</strong></p>
+                    <div class="code-block">
+                        <pre>Votre nom : Alice
+Bonjour Alice</pre>
+                    </div>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Demander un nombre entier avec int() :</h4>
+                    <div class="code-block">
+                        <pre>age = int(input("Votre âge : "))
+print("L'année prochaine vous aurez", age + 1, "ans")</pre>
+                    </div>
+                    <p><strong>Résultat :</strong></p>
+                    <div class="code-block">
+                        <pre>Votre âge : 20
+L'année prochaine vous aurez 21 ans</pre>
+                    </div>
+                    <p><strong>Explication :</strong> <code>int()</code> convertit la chaîne de caractères en nombre entier.</p>
+                </div>
+                
+                <div class="example-box">
+                    <h4>Demander un nombre décimal avec float() :</h4>
+                    <div class="code-block">
+                        <pre>taille = float(input("Votre taille en m : "))
+print("Votre taille en cm est", taille * 100)</pre>
+                    </div>
+                    <p><strong>Résultat :</strong></p>
+                    <div class="code-block">
+                        <pre>Votre taille en m : 1.75
+Votre taille en cm est 175.0</pre>
+                    </div>
+                    <p><strong>Explication :</strong> <code>float()</code> convertit la chaîne de caractères en nombre décimal.</p>
+                </div>
+                
+                <h3>3. Exercices basiques</h3>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 1 - Premier programme</h4>
+                    <p>Afficher "Hello World" puis votre prénom.</p>
+                    <p><strong>Exemple attendu :</strong></p>
+                    <div class="code-block">
+                        <pre>Hello World
+Marie</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 2 - Présentation simple</h4>
+                    <p>Demander le prénom et afficher "Bonjour [prénom]".</p>
+                    <p><strong>Exemple d'exécution :</strong></p>
+                    <div class="code-block">
+                        <pre>Votre prénom : Jean
+Bonjour Jean</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 3 - Calcul simple</h4>
+                    <p>Demander un nombre et afficher le double.</p>
+                    <p><strong>Exemple d'exécution :</strong></p>
+                    <div class="code-block">
+                        <pre>Entrez un nombre : 7
+Le double de 7 est 14</pre>
+                    </div>
+                </div>
+                
+                <h3>4. Exercices de difficulté progressive</h3>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 4 - Addition</h4>
+                    <p>Demander deux nombres et afficher leur somme.</p>
+                    <p><strong>Exemple d'exécution :</strong></p>
+                    <div class="code-block">
+                        <pre>Premier nombre : 15
+Deuxième nombre : 23
+15 + 23 = 38</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 5 - Présentation complète</h4>
+                    <p>Demander prénom, âge et ville. Afficher une présentation.</p>
+                    <p><strong>Exemple d'exécution :</strong></p>
+                    <div class="code-block">
+                        <pre>Votre prénom : Alice
+Votre âge : 17
+Votre ville : Bulle
+Bonjour Alice ! Vous avez 17 ans et habitez à Bulle.</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 6 - Calculs multiples</h4>
+                    <p>Demander deux nombres et afficher addition, soustraction et multiplication.</p>
+                    <p><strong>Exemple d'exécution :</strong></p>
+                    <div class="code-block">
+                        <pre>Premier nombre : 12
+Deuxième nombre : 5
+Addition : 12 + 5 = 17
+Soustraction : 12 - 5 = 7
+Multiplication : 12 × 5 = 60</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟠 Exercice 7 - Répétition de caractères</h4>
+                    <p>Demander un caractère et un nombre, puis afficher le caractère répété.</p>
+                    <p><strong>Exemple d'exécution :</strong></p>
+                    <div class="code-block">
+                        <pre>Quel caractère ? *
+Combien de fois ? 8
+********</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟠 Exercice 8 - Convertisseur</h4>
+                    <p>Demander un prix en CHF et l'afficher en EUR (1 CHF = 0.92 EUR).</p>
+                    <p><strong>Exemple d'exécution :</strong></p>
+                    <div class="code-block">
+                        <pre>Prix en CHF : 100
+100.0 CHF = 92.0 EUR</pre>
+                    </div>
+                </div>
+                
+                <h3>5. Application finale - Calculatrice personnelle</h3>
+                
+                <div class="exercise-box">
+                    <h4>🔴 Projet final - Calculatrice avec profil utilisateur</h4>
+                    <p><strong>Objectif :</strong> Créer une calculatrice qui se souvient de l'utilisateur et garde un historique.</p>
+                    
+                    <p><strong>Fonctionnalités à implémenter :</strong></p>
+                    <p>• Demander le nom de l'utilisateur</p>
+                    <p>• Afficher un menu de bienvenue personnalisé</p>
+                    <p>• Demander deux nombres</p>
+                    <p>• Effectuer les 4 opérations de base (+, -, ×, ÷)</p>
+                    <p>• Afficher tous les résultats sous forme de rapport</p>
+                    <p>• Calculer et afficher la moyenne des résultats</p>
+                    <p>• Dire au revoir personnalisé</p>
+                    
+                    <p><strong>Exemple d'exécution complète :</strong></p>
+                    <div class="code-block">
+                        <pre>=== CALCULATRICE PERSONNELLE ===
+Votre nom : Marie
+Bonjour Marie ! Bienvenue dans votre calculatrice personnelle.
+
+Premier nombre : 20
+Deuxième nombre : 4
+
+=== RAPPORT DE CALCULS POUR MARIE ===
+Addition : 20 + 4 = 24
+Soustraction : 20 - 4 = 16
+Multiplication : 20 × 4 = 80
+Division : 20 ÷ 4 = 5.0
+
+Moyenne des résultats : 31.25
+
+Merci Marie d'avoir utilisé la calculatrice !
+À bientôt !</pre>
+                    </div>
+                </div>
+                
+                                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Section QCM séparée avec plus d'espacement -->
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mb-5">
+                        <div class="alert alert-info p-4">
+                            <h5 class="mb-3">🎯 Testez vos connaissances !</h5>
+                            <p class="mb-4">Vérifiez votre compréhension du chapitre avec notre QCM de 10 questions.</p>
+                            <a href="{{ url_for('qcm', chapitre=1) }}" class="btn btn-warning btn-lg px-4 py-3">
+                                📝 Faire le QCM du Chapitre 1
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Navigation séparée -->
+        <div class="container mt-4 pt-4">
+            <div class="row">
+                <div class="col-12">
+                    <hr class="mb-4">
+                    <div class="navigation-chapter">
+                        <a href="{{ url_for('cours') }}" class="btn btn-outline-primary btn-lg">← Sommaire</a>
+                        <a href="{{ url_for('chapitre2') }}" class="btn btn-primary btn-lg">Chapitre 2 : Les conditions →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

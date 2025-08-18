@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}ECOURS - Cours Python{% endblock %}
+
+{% block page_title %}Cours{% endblock %}
+{% block breadcrumb %}Cours{% endblock %}
+
+{% block content %}
+    {% if not session.user_id %}
+    
+    <div class="section bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="inscription-banner p-4 bg-primary text-white rounded">
+                        <h2 class="mb-3">🎓 Inscrivez-vous au cours Python !</h2>
+                        <p class="mb-4">Rejoignez les élèves du Collège du Sud et apprenez Python à votre rythme avec des exercices pratiques et un suivi personnalisé.</p>
+                        <div class="text-center">
+                            <a href="{{ url_for('inscription') }}" class="btn btn-light btn-lg">
+                                <i class="fa fa-user-plus me-2"></i>Inscription
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Section d'inscription Fin -->
+    {% endif %}
+    
+    <!-- Chapitres Debut -->
+    <div class="section">
+        <div class="container">
+            <div class="section-title">
+                <h5>Python</h5>
+                <h1>Programme du cours Python</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    {% if session.user_id %}
+                        <a href="{{ url_for('chapitre1') }}" class="chapter-link">
+                    {% else %}
+                        <div class="chapter-link-disabled" onclick="alertLogin()">
+                    {% endif %}
+                        <div class="chapter-card" id="chapitre1">
+                            <img src="{{ url_for('static', filename='img/cat-1.jpg') }}" alt="Chapitre 1">
+                            <div class="chapter-overlay"></div>
+                            <div class="chapter-content">
+                                <h4>Chapitre 1</h4>
+                                <div class="medium">Les Entrées / Sorties</div>
+                                {% if not session.user_id %}
+                                    <div class="lock-icon">🔒</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% if session.user_id %}
+                        </a>
+                    {% else %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3">
+                    {% if session.user_id %}
+                        <a href="{{ url_for('chapitre2') }}" class="chapter-link">
+                    {% else %}
+                        <div class="chapter-link-disabled" onclick="alertLogin()">
+                    {% endif %}
+                        <div class="chapter-card" id="chapitre2">
+                            <img src="{{ url_for('static', filename='img/cat-2.jpg') }}" alt="Chapitre 2">
+                            <div class="chapter-overlay"></div>
+                            <div class="chapter-content">
+                                <h4>Chapitre 2</h4>
+                                <div class="medium">Les conditions</div>
+                                {% if not session.user_id %}
+                                    <div class="lock-icon">🔒</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% if session.user_id %}
+                        </a>
+                    {% else %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3">
+                    {% if session.user_id %}
+                        <a href="{{ url_for('chapitre3') }}" class="chapter-link">
+                    {% else %}
+                        <div class="chapter-link-disabled" onclick="alertLogin()">
+                    {% endif %}
+                        <div class="chapter-card" id="chapitre3">
+                            <img src="{{ url_for('static', filename='img/cat-3.jpg') }}" alt="Chapitre 3">
+                            <div class="chapter-overlay"></div>
+                            <div class="chapter-content">
+                                <h4>Chapitre 3</h4>
+                                <div class="medium">La boucle for</div>
+                                {% if not session.user_id %}
+                                    <div class="lock-icon">🔒</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% if session.user_id %}
+                        </a>
+                    {% else %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3">
+                    {% if session.user_id %}
+                        <a href="{{ url_for('chapitre4') }}" class="chapter-link">
+                    {% else %}
+                        <div class="chapter-link-disabled" onclick="alertLogin()">
+                    {% endif %}
+                        <div class="chapter-card" id="chapitre4">
+                            <img src="{{ url_for('static', filename='img/cat-4.jpg') }}" alt="Chapitre 4">
+                            <div class="chapter-overlay"></div>
+                            <div class="chapter-content">
+                                <h4>Chapitre 4</h4>
+                                <div class="medium">La boucle while</div>
+                                {% if not session.user_id %}
+                                    <div class="lock-icon">🔒</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% if session.user_id %}
+                        </a>
+                    {% else %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3">
+                    {% if session.user_id %}
+                        <a href="{{ url_for('chapitre5') }}" class="chapter-link">
+                    {% else %}
+                        <div class="chapter-link-disabled" onclick="alertLogin()">
+                    {% endif %}
+                        <div class="chapter-card" id="chapitre5">
+                            <img src="{{ url_for('static', filename='img/cat-5.jpg') }}" alt="Chapitre 5">
+                            <div class="chapter-overlay"></div>
+                            <div class="chapter-content">
+                                <h4>Chapitre 5</h4>
+                                <div class="medium">Les listes</div>
+                                {% if not session.user_id %}
+                                    <div class="lock-icon">🔒</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% if session.user_id %}
+                        </a>
+                    {% else %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3">
+                    {% if session.user_id %}
+                        <a href="{{ url_for('chapitre6') }}" class="chapter-link">
+                    {% else %}
+                        <div class="chapter-link-disabled" onclick="alertLogin()">
+                    {% endif %}
+                        <div class="chapter-card" id="chapitre6">
+                            <img src="{{ url_for('static', filename='img/cat-6.jpg') }}" alt="Chapitre 6">
+                            <div class="chapter-overlay"></div>
+                            <div class="chapter-content">
+                                <h4>Chapitre 6</h4>
+                                <div class="medium">Les fonctions</div>
+                                {% if not session.user_id %}
+                                    <div class="lock-icon">🔒</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% if session.user_id %}
+                        </a>
+                    {% else %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Chapitres Fin -->
+    
+    <!-- Contenu Cours Debut -->
+    <div class="section">
+        <div class="container">
+            <div class="section-title">
+                <h5>Cours Python</h5>
+                <h1>Contenu du cours Python</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="course-content">
+                        <ul>
+                            <li><strong>Chapitre 1 :</strong> Les Entrées / Sorties (input, print)</li>
+                            <li><strong>Chapitre 2 :</strong> Les conditions (if, elif, else)</li>
+                            <li><strong>Chapitre 3 :</strong> La boucle For</li>
+                            <li><strong>Chapitre 4 :</strong> La boucle while</li>
+                            <li><strong>Chapitre 5 :</strong> Les listes</li>
+                            <li><strong>Chapitre 6 :</strong> Les fonctions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contenu Cours Fin -->
+    
+    <style>
+        .chapter-link-disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+            position: relative;
+        }
+        
+        .chapter-link-disabled:hover {
+            opacity: 0.8;
+        }
+        
+        .lock-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+        
+        .chapter-link-disabled .chapter-overlay {
+            background: rgba(0,0,0,0.7) !important;
+        }
+    </style>
+    
+    <script>
+        function alertLogin() {
+            alert('Vous devez être connecté pour accéder aux chapitres du cours.\n\nCliquez sur "S\'inscrire" ou "Se connecter" en haut de la page.');
+        }
+    </script>
+{% endblock %}

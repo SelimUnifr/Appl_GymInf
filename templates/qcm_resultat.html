@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Résultat QCM Chapitre {{ chapitre }}{% endblock %}
+
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Résultat</h6>
+            <h1 class="mb-5">QCM Chapitre {{ chapitre }} - Résultat</h1>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Score principal -->
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <div class="score-display mb-3">
+                            <h2 class="display-4 fw-bold 
+                                {% if attempt.score >= 80 %}text-success
+                                {% elif attempt.score >= 60 %}text-warning
+                                {% else %}text-danger{% endif %}">
+                                {{ attempt.score }}%
+                            </h2>
+                            <p class="lead">{{ attempt.score }}/100 points</p>
+                        </div>
+                        
+                        <div class="alert alert-{{ message_class }} mx-auto" style="max-width: 500px;">
+                            <h5 class="mb-0">{{ message }}</h5>
+                        </div>
+                        
+                        <div class="row text-center mt-4">
+                            <div class="col-md-4">
+                                <div class="stat-box">
+                                    <h4 class="text-success">{{ answers_details|selectattr('est_correcte')|list|length }}</h4>
+                                    <p class="text-muted">Bonnes réponses</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-box">
+                                    <h4 class="text-danger">{{ answers_details|length - answers_details|selectattr('est_correcte')|list|length }}</h4>
+                                    <p class="text-muted">Mauvaises réponses</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-box">
+                                    <h4 class="text-primary">{{ answers_details|length }}</h4>
+                                    <p class="text-muted">Total questions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Détail des réponses -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">📋 Détail des réponses</h4>
+                    </div>
+                    <div class="card-body">
+                        {% for answer in answers_details %}
+                        <div class="question-review mb-4 p-3 border rounded
+                            {% if answer.est_correcte %}border-success bg-light-success
+                            {% else %}border-danger bg-light-danger{% endif %}">
+                            
+                            <div class="d-flex align-items-start">
+                                <div class="me-3">
+                                    {% if answer.est_correcte %}
+                                        <span class="badge bg-success fs-6">✓</span>
+                                    {% else %}
+                                        <span class="badge bg-danger fs-6">✗</span>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="flex-grow-1">
+                                    <h6 class="question-text mb-2">
+                                        <strong>Question {{ loop.index }}:</strong>
+                                        {{ answer.texte_question|replace('\n', '<br>')|safe }}
+                                    </h6>
+                                    
+                                    <div class="answers-comparison">
+                                        {% set options = {'A': answer.option_a, 'B': answer.option_b, 'C': answer.option_c, 'D': answer.option_d} %}
+                                        
+                                        {% if not answer.est_correcte %}
+                                        <div class="mb-2">
+                                            <span class="badge bg-danger me-2">Votre réponse:</span>
+                                            <span class="text-danger">
+                                                <strong>{{ answer.reponse_selectionnee }}.</strong> 
+                                                {{ options[answer.reponse_selectionnee]|replace('\n', '<br>')|safe }}
+                                            </span>
+                                        </div>
+                                        {% endif %}
+                                        
+                                        <div class="mb-0">
+                                            <span class="badge bg-success me-2">Bonne réponse:</span>
+                                            <span class="text-success">
+                                                <strong>{{ answer.bonne_reponse }}.</strong> 
+                                                {{ options[answer.bonne_reponse]|replace('\n', '<br>')|safe }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Actions -->
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('qcm', chapitre=chapitre) }}" class="btn btn-primary me-3">
+                        🔄 Refaire le QCM
+                    </a>
+                    <a href="{{ url_for('tableau_de_bord') }}" class="btn btn-outline-primary me-3">
+                        📊 Tableau de bord
+                    </a>
+                    <a href="{{ url_for('chapitre1') if chapitre == 1 else url_for('cours') }}" class="btn btn-outline-secondary">
+                        ← Retour au chapitre
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bg-light-success {
+    background-color: #f8fff8 !important;
+}
+
+.bg-light-danger {
+    background-color: #fff8f8 !important;
+}
+
+.score-display {
+    padding: 20px;
+}
+
+.stat-box {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    margin: 10px 0;
+}
+
+.question-review {
+    transition: all 0.3s ease;
+}
+
+.question-text {
+    color: #2c3e50;
+    line-height: 1.5;
+}
+
+.answers-comparison {
+    font-size: 0.9em;
+}
+
+.badge {
+    font-size: 0.8em;
+}
+
+code, pre {
+    background-color: #f1f3f4;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+}
+</style>
+{% endblock %}

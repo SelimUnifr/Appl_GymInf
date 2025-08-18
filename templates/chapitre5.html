@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+
+{% block title %}Chapitre 5 - Les Listes - Cours Python CSUD{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="chapter-content-page">
+        <h1 class="text-center mb-4">Chapitre 5 : Les Listes</h1>
+        
+        <div class="row">
+            <div class="col-12">
+                
+                <h2>Qu'est-ce qu'une liste ?</h2>
+                <p>Une liste est une collection d'éléments qui sont stockés dans un ordre spécifique. Grâce à cet ordre, on peut accéder à chaque élément de la liste en utilisant son index (sa place dans la liste), qui est un numéro entier commençant à 0.</p>
+                
+                <div class="info-box">
+                    <h4>💻 Zone de programmation</h4>
+                    <p>Tu peux utiliser l'espace Python ci-dessous pour écrire ton code, l'essayer et voir tout de suite si ton programme fonctionne.</p>
+                    <iframe src="https://webtigerpython.ethz.ch/" width="100%" height="400" style="border: 1px solid #ccc; border-radius: 5px; margin: 15px 0;"></iframe>
+                </div>
+                
+                <h3>1. Créer une liste et l'afficher</h3>
+                <p>Pour créer une liste en Python, utilisez les crochets <code>[]</code> et séparez les éléments de la liste par des virgules. Par exemple :</p>
+                
+                <div class="code-block">
+                    <pre>ma_liste_vide = []  # Crée une liste vide
+
+salutations = ["Bonjour", "Bonsoir", "Salut"]  # Crée une liste avec trois chaines de caractère.
+
+ma_liste = [1, 2, 3, 4]  # Crée une liste avec les éléments 1, 2, 3 et 4.</pre>
+                </div>
+                
+                <p>Pour afficher la liste, utilisez la fonction <code>print()</code> :</p>
+                
+                <div class="code-block">
+                    <pre>print(ma_liste)  # Affiche la liste entière</pre>
+                </div>
+                
+                <h3>2. Ajouter et supprimer des éléments</h3>
+                <p>Pour ajouter un élément à la fin d'une liste, utilisez la méthode <code>append()</code> :</p>
+                
+                <div class="code-block">
+                    <pre>ma_liste.append(5)  # Ajoute l'élément 5 à ma_liste
+salutations.append("Yo")  # Ajoute l'élément "Yo" à salutations</pre>
+                </div>
+                
+                <p>Pour supprimer un élément d'une liste, utilisez la méthode <code>remove()</code> :</p>
+                
+                <div class="code-block">
+                    <pre>ma_liste.remove(3)  # Supprime l'élément 3 de ma_liste</pre>
+                </div>
+                
+                <h3>3. La taille d'une liste</h3>
+                <p>Pour obtenir la taille d'une liste, utilisez la fonction <code>len()</code> :</p>
+                
+                <div class="code-block">
+                    <pre>taille = len(ma_liste)</pre>
+                </div>
+                
+                <h3>4. Accéder à un élément</h3>
+                <p>Pour accéder à un élément spécifique d'une liste, vous pouvez utiliser son index. Les index des éléments dans une liste commencent à 0. Par exemple, pour accéder au premier élément d'une liste nommée <code>ma_liste</code>, vous pouvez utiliser <code>ma_liste[0]</code>. Pour accéder au troisième élément, vous pouvez utiliser <code>ma_liste[2]</code>.</p>
+                
+                <p>Par exemple :</p>
+                
+                <div class="code-block">
+                    <pre>salutations = ["Bonjour", "Bonsoir", "Salut"]
+
+print(salutations[1])  # Affichera : Bonsoir</pre>
+                </div>
+                
+                <h3>5. Exercices pratiques</h3>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 1 : Manipuler les listes</h4>
+                    <p><strong>a.</strong> Créer une liste nommée « ingredients_dessert » contenant les ingrédients suivants : chocolat, ananas, sucre, beurre, moutarde, farine et fromage blanc.</p>
+                    
+                    <p><strong>b.</strong> Afficher la liste. Le résultat attendu est :</p>
+                    <div class="code-block">
+                        <pre>["chocolat", "ananas", "sucre", "beurre", "moutarde", "farine", "fromage blanc"]</pre>
+                    </div>
+                    
+                    <p><strong>c.</strong> Ajouter l'élément « oeuf » à la liste « ingredients_dessert ».</p>
+                    
+                    <p><strong>d.</strong> Afficher la liste. Le résultat attendu est :</p>
+                    <div class="code-block">
+                        <pre>["chocolat", "ananas", "sucre", "beurre", "moutarde", "farine", "fromage blanc", "oeuf"]</pre>
+                    </div>
+                    
+                    <p><strong>e.</strong> Supprimer l'élément « moutarde » de la liste « ingredients_dessert ».</p>
+                    
+                    <p><strong>f.</strong> Afficher la liste. Le résultat attendu est :</p>
+                    <div class="code-block">
+                        <pre>["chocolat", "ananas", "sucre", "beurre", "farine", "fromage blanc", "oeuf"]</pre>
+                    </div>
+                    
+                    <p><strong>g.</strong> Afficher le premier ingrédient de la liste. Résultat attendu :</p>
+                    <div class="code-block">
+                        <pre>chocolat</pre>
+                    </div>
+                    
+                    <p><strong>h.</strong> Afficher la longueur de la liste. Résultat attendu :</p>
+                    <div class="code-block">
+                        <pre>7</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 2 : Ma liste de fruits</h4>
+                    <p><strong>1)</strong> Crée une liste appelée "fruits" contenant : pomme, banane, orange</p>
+                    
+                    <p><strong>2)</strong> Affiche la liste des fruits avec cette phrase :</p>
+                    <div class="code-block">
+                        <pre>print("Voici mes fruits préférés :")
+print(fruits)</pre>
+                    </div>
+                    
+                    <p><strong>3)</strong> Ajoute "kiwi" à la liste en utilisant la méthode <code>append()</code></p>
+                    
+                    <p><strong>4)</strong> Affiche le nombre total de fruits en utilisant <code>len()</code> :</p>
+                    <div class="code-block">
+                        <pre>print("J'ai maintenant", len(fruits), "fruits dans ma liste")</pre>
+                    </div>
+                    
+                    <p><strong>5)</strong> Retire "banane" de la liste en utilisant la méthode <code>remove()</code></p>
+                    
+                    <p><strong>6)</strong> Affiche la liste finale :</p>
+                    <div class="code-block">
+                        <pre>print("Ma liste finale :")
+print(fruits)</pre>
+                    </div>
+                </div>
+                
+                <h3>6. Les listes et la boucle for</h3>
+                <h4>Afficher chaque élément... et son index.</h4>
+                <p>Nous avons vu qu'on peut afficher un élément de liste de cette manière :</p>
+                
+                <div class="code-block">
+                    <pre>salutations = ["Bonjour", "Bonsoir", "Salut"]
+print(salutations[1])  # Affichera : Bonsoir</pre>
+                </div>
+                
+                <p>On pourrait donc afficher tous les éléments de cette manière :</p>
+                
+                <div class="code-block">
+                    <pre>print("A l'index 0 il y a", salutations[0])  # Affichera : A l'index 0 il y a Bonjour
+print("A l'index 1 il y a", salutations[1])  # Affichera : A l'index 1 il y a Bonsoir
+print("A l'index 2 il y a", salutations[2])  # Affichera : A l'index 2 il y a Salut</pre>
+                </div>
+                
+                <p>Si on utilise le même print, avec l'index qu'on augmente, ce serait l'occasion parfaite d'utiliser un for !</p>
+                
+                <p>Voici un exemple d'utilisation de la fonction for pour afficher chaque index et son élément d'une liste :</p>
+                
+                <div class="code-block">
+                    <pre>for i in range(2):
+    print("A l'index", i, "il y a", salutations[i])</pre>
+                </div>
+                
+                <p>Sauf qu'on ne connait pas forcément la taille de la liste ! Mais par quoi remplacer le range(2) ? Nous avons une fonction qui nous donne la taille de la liste : len() !</p>
+                
+                <p>Voici le code final :</p>
+                
+                <div class="code-block">
+                    <pre>for i in range(len(salutations)):
+    print("A l'index", i, "il y a", salutations[i])</pre>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 3 : Liste de courses</h4>
+                    <ol>
+                        <li>Créez une liste vide nommée <code>liste_courses</code></li>
+                        <li>Utilisez la méthode <code>append()</code> pour ajouter 5 éléments de votre choix à la liste</li>
+                        <li>Utilisez la fonction <code>len()</code> pour afficher combien d'éléments se trouvent dans la liste</li>
+                        <li>Utilisez une boucle <code>for</code> et la fonction <code>print()</code> pour afficher chaque élément de la liste avec son index</li>
+                        <li>Utilisez la méthode <code>remove()</code> pour supprimer l'un des éléments de la liste</li>
+                        <li>Utilisez à nouveau la fonction <code>len()</code> pour afficher combien d'éléments se trouvent dans la liste après la suppression</li>
+                        <li>Utilisez à nouveau une boucle <code>for</code> et la fonction <code>print()</code> pour afficher chaque élément de la liste avec son index après la suppression</li>
+                    </ol>
+                </div>
+                
+                <h3>7. Les listes et les conditions</h3>
+                <h4>Est-ce qu'un élément est dans une liste ?</h4>
+                <p>Pour tester si une liste contient un élément, on peut utiliser l'opérateur <code>in</code> :</p>
+                
+                <div class="code-block">
+                    <pre>if "valeur" in liste :
+    print("Le mot 'valeur' est dans la liste")</pre>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 4 : Recherche de séries</h4>
+                    <ol>
+                        <li>Créez une liste de noms de séries en utilisant la syntaxe suivante : <code>series = ["nom_serie_1", "nom_serie_2", "nom_serie_3", ...]</code>. (si tu n'as pas d'idées, utilise "Vikings", "Sherlock", "Westworld", "Fargo", "Gotham", "Homeland")</li>
+                        
+                        <li>Afficher chaque élément de la liste précédé d'un tiret.</li>
+                        
+                        <li>Utilisez la fonction <code>input()</code> pour demander à l'utilisateur de saisir un nom de série à chercher. Utilisez une variable <code>serie_a_chercher</code> pour stocker la saisie de l'utilisateur.</li>
+                        
+                        <li>Utilisez une instruction <code>if</code> pour vérifier si la série saisie se trouve dans la liste de séries. Utilisez l'instruction <code>in</code> pour vérifier si l'élément existe dans la liste.</li>
+                        
+                        <li>Utilisez la fonction <code>print()</code> pour afficher un message indiquant si la série est dans la liste ou non.</li>
+                    </ol>
+                    
+                    <p><strong>Voici deux exemples d'exécution :</strong></p>
+                    
+                    <div class="code-block">
+                        <pre>Séries disponibles :
+- Vikings
+- Sherlock
+- Westworld
+- Fargo
+- Gotham
+- Homeland
+Saisir le nom d'une série : Sherlock
+Sherlock est disponible</pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <pre>Séries disponibles :
+- Vikings
+- Sherlock
+- Westworld
+- Fargo
+- Gotham
+- Homeland
+
+Saisir le nom d'une série : The Big Bang Theory
+The Big Bang Theory n'est pas disponible</pre>
+                    </div>
+                </div>
+                
+                <h3>8. Exercice avancé : Tirage du loto</h3>
+                
+                <h4>Créer une liste depuis un range</h4>
+                <p>Pour créer une liste à partir d'un range, on peut utiliser la fonction <code>list()</code> ainsi :</p>
+                
+                <div class="code-block">
+                    <pre>maliste = list(range(1,5))</pre>
+                </div>
+                
+                <p>ce qui créera la liste <code>[1,2,3,4]</code> dans la variable <code>maliste</code></p>
+                
+                <h4>Tirer au hasard un élément d'une liste</h4>
+                <p>Pour tirer un élément au hasard dans une liste on peut utiliser la fonction <code>random.choice()</code> ainsi :</p>
+                
+                <div class="code-block">
+                    <pre>montirage = random.choice(maliste)</pre>
+                </div>
+                
+                <p>ce qui sélectionnera un élément au hasard de la liste.</p>
+                
+                <p><strong>Remarque :</strong> pour utiliser ces fonctionnalités, importe le module random au début de ton programme :</p>
+                
+                <div class="code-block">
+                    <pre>import random</pre>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🔴 Exercice 5 : Simulation du tirage du loto</h4>
+                    
+                    <div style="text-align: center; margin: 20px 0;">
+                        <img src="{{ url_for('static', filename='img/tirage_loto.png') }}" alt="Tirage du loto" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    
+                    <p><strong>Objectif :</strong> Simule un tirage du loto où on prendrait 5 numéros de 1 à 50. Attention, un numéro ne peut pas être tiré deux fois !</p>
+                    
+                    <p><strong>Voici les questions à se poser :</strong></p>
+                    
+                    <p><strong>1-</strong> De quelles structures de données tu vas avoir besoin ? Autrement dit : qu'est-ce qu'il faudra enregistrer ?</p>
+                    
+                    <p><strong>2-</strong> Quel est l'algorithme ? Dans quel ordre on fait les actions ?</p>
+                    
+                    <p><strong>3-</strong> Ecris le programme (pour que ce soit plus simple n'hésite pas à essayer avec moins de nombre et à afficher chaque étape, comme dans l'exemple ci-dessous où on a testé avec juste les nombres de 1 à 10)</p>
+                </div>
+                
+                <h3>9. Bonnes pratiques pour les listes</h3>
+                <ul>
+                    <li><strong>Noms explicites :</strong> Donnez des noms de listes clairs et représentatifs.</li>
+                    
+                    <li><strong>Initialisation :</strong> Utilisez <code>[]</code> plutôt que <code>list()</code> pour créer une liste vide.</li>
+                    
+                    <li><strong>Ajout d'éléments :</strong>
+                        <ul>
+                            <li><code>append</code> = ajouter un seul élément à la fin.</li>
+                            <li><code>extend</code> = ajouter plusieurs éléments à la fin.</li>
+                            <li><code>insert</code> = ajouter un élément à une position choisie.</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>Suppression :</strong> Utilisez <code>remove</code> (par valeur) ou <code>pop</code> (par index) selon le besoin.</li>
+                    
+                    <li><strong>Taille et parcours :</strong> Utilisez <code>len(liste)</code> pour la taille et <code>for element in liste</code> pour parcourir directement les éléments.</li>
+                </ul>
+                
+            </div>
+        </div>
+        
+        <!-- Section QCM séparée avec plus d'espacement -->
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mb-5">
+                        <div class="alert alert-info p-4">
+                            <h5 class="mb-3">🎯 Testez vos connaissances !</h5>
+                            <p class="mb-4">Vérifiez votre compréhension du chapitre avec notre QCM de 10 questions.</p>
+                            <a href="{{ url_for('qcm', chapitre=5) }}" class="btn btn-warning btn-lg px-4 py-3">
+                                📝 Faire le QCM du Chapitre 5
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Navigation séparée -->
+        <div class="container mt-4 pt-4">
+            <div class="row">
+                <div class="col-12">
+                    <hr class="mb-4">
+                    <div class="navigation-chapter">
+                        <a href="{{ url_for('chapitre4') }}" class="btn btn-outline-primary btn-lg">← Chapitre 4 : La boucle While</a>
+                        <a href="{{ url_for('chapitre6') }}" class="btn btn-primary btn-lg">Chapitre 6 : Les fonctions →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

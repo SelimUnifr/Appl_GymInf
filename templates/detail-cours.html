@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}ECOURS - Détail du cours Python{% endblock %}
+
+{% block page_title %}Détail du cours Python{% endblock %}
+{% block breadcrumb %}Détail{% endblock %}
+
+{% block content %}
+    
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="teacher-card">
+                        <h2>Présentation du cours Python</h2>
+                        <img class="rounded mb-4" style="width: 50%; max-width: 400px;" src="{{ url_for('static', filename='img/carousel-1.jpg') }}" alt="Image du cours Python">
+                        
+                        <p>Ce cours de Python, proposé au Collège du Sud (CSUD) à Bulle, s'adresse aux élèves qui souhaitent découvrir la programmation à travers un langage moderne, simple et puissant.</p>
+                        
+                        <p>Il est structuré en 6 chapitres progressifs, illustrés par des exemples concrets et accompagnés d'exercices pratiques. Des quiz permettent de vérifier la bonne compréhension des notions étudiées.</p>
+                        
+                        <h3>Au programme :</h3>
+                        <ul style="text-align:left; max-width:600px; margin:auto;">
+                            <li>Découvrir la syntaxe de base de Python</li>
+                            <li>Comprendre les structures de contrôle (conditions, boucles)</li>
+                            <li>Manipuler les fonctions et les listes</li>
+                            <li>Réaliser de petits projets concrets</li>
+                        </ul>
+                        
+                        <h3>Chapitres du cours :</h3>
+                        <ul style="text-align:left; max-width:600px; margin:auto;">
+                            <li><strong>Chapitre 1 :</strong> Les entrées / sorties (input, print)</li>
+                            <li><strong>Chapitre 2 :</strong> Les conditions (if, elif, else)</li>
+                            <li><strong>Chapitre 3 :</strong> La boucle for</li>
+                            <li><strong>Chapitre 4 :</strong> La boucle while</li>
+                            <li><strong>Chapitre 5 :</strong> Les listes</li>
+                            <li><strong>Chapitre 6 :</strong> Les fonctions</li>
+                        </ul>
+                        
+                        <p>Ce cours est un complément au cours donné au gymnase en présentiel, afin de permettre à chacun d'avancer à son rythme et de consolider les notions vues en classe.</p>
+                        
+                        <p>Pour toute question, les élèves peuvent contacter l'enseignant ou utiliser le formulaire de contact.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

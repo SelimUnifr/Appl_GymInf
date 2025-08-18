@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}ECOURS - Contact{% endblock %}
+
+{% block page_title %}Contact{% endblock %}
+{% block breadcrumb %}Contact{% endblock %}
+
+{% block content %}
+    
+    <div class="section">
+        <div class="container">
+            <div class="section-title">
+                <h5>Contact</h5>
+                <h1>Contactez-nous</h1>
+            </div>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }}">
+                            {{ message }}
+                            <button type="button" class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="contact-form">
+                        <form method="POST" action="/contact">
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" name="name" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="email" class="form-control" name="email" placeholder="Votre email" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="text" class="form-control" name="subject" placeholder="Sujet" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <textarea class="form-control" name="message" placeholder="Votre message" rows="6" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="contact-info">
+                        <div class="mb-4">
+                            <i class="fa fa-map-marker-alt"></i>
+                            <h5>Adresse</h5>
+                            <p>Rue de Dardens 79, 1630 Bulle, Suisse</p>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fa fa-phone-alt"></i>
+                            <h5>Téléphone</h5>
+                            <p>+41 78 859 42 65</p>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fa fa-envelope"></i>
+                            <h5>Email</h5>
+                            <p><a href="mailto:selim.kairouani@edufr.ch?subject=Question sur le cours Python">selim.kairouani@edufr.ch</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

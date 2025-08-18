@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}QCM Chapitre {{ chapitre }}{% endblock %}
+
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="mb-5">QCM - Chapitre {{ chapitre }}</h1>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">
+                            📝 Questionnaire à Choix Multiples
+                        </h4>
+                        <p class="text-muted mb-0">
+                            {{ questions|length }} questions • 10 points par question • {{ questions|length * 10 }}% au total
+                        </p>
+                    </div>
+                    
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('qcm_submit', chapitre=chapitre) }}">
+                            {% for question in questions %}
+                            <div class="question-block mb-4 p-4 border rounded">
+                                <h5 class="question-title">
+                                    <span class="question-number me-2">{{ loop.index }}.</span>
+                                    <div class="question-text">{{ question.texte_question|format_python_code|safe }}</div>
+                                </h5>
+                                
+                                <div class="options mt-3">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                               name="question_{{ question.id }}" 
+                                               id="q{{ question.id }}_a" 
+                                               value="A" required>
+                                        <label class="form-check-label" for="q{{ question.id }}_a">
+                                            <span class="option-letter">A.</span> 
+                                            <span class="option-text">{{ question.option_a|format_simple_text|safe }}</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                               name="question_{{ question.id }}" 
+                                               id="q{{ question.id }}_b" 
+                                               value="B" required>
+                                        <label class="form-check-label" for="q{{ question.id }}_b">
+                                            <span class="option-letter">B.</span> 
+                                            <span class="option-text">{{ question.option_b|format_simple_text|safe }}</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                               name="question_{{ question.id }}" 
+                                               id="q{{ question.id }}_c" 
+                                               value="C" required>
+                                        <label class="form-check-label" for="q{{ question.id }}_c">
+                                            <span class="option-letter">C.</span> 
+                                            <span class="option-text">{{ question.option_c|format_simple_text|safe }}</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" 
+                                               name="question_{{ question.id }}" 
+                                               id="q{{ question.id }}_d" 
+                                               value="D" required>
+                                        <label class="form-check-label" for="q{{ question.id }}_d">
+                                            <span class="option-letter">D.</span> 
+                                            <span class="option-text">{{ question.option_d|format_simple_text|safe }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    📊 Valider mes réponses
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <a href="{{ url_for('chapitre' + chapitre|string) }}" class="btn btn-outline-secondary">
+                        ← Retour au chapitre {{ chapitre }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// JavaScript pour gérer l'état sélectionné)
+document.addEventListener('DOMContentLoaded', function() {
+    const radioInputs = document.querySelectorAll('.form-check-input[type="radio"]');
+    
+    radioInputs.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            
+            // Une seule option par question apparaît comme sélectionnée visuellement, 
+            // même si l'utilisateur change d'avis plusieurs fois
+
+            const groupName = this.name;
+            const sameGroupRadios = document.querySelectorAll(`input[name="${groupName}"]`);
+            
+            sameGroupRadios.forEach(function(r) {
+                r.closest('.form-check').classList.remove('selected');
+            });
+            
+            // Si le bouton radio est coché, alors mise en évidence de tout son conteneur 
+            //(texte + bouton) en lui ajoutant la classe CSS 'selected'"
+            
+            if (this.checked) {
+                this.closest('.form-check').classList.add('selected');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

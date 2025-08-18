@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+
+{% block title %}Chapitre 6 - Les Fonctions - Cours Python CSUD{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="chapter-content-page">
+        <h1 class="text-center mb-4">Chapitre 6 : Les Fonctions</h1>
+        
+        <div class="row">
+            <div class="col-12">
+                
+                <h2>1. Définition</h2>
+                <p>Une <strong>fonction</strong> est un bloc de code qui réalise une tâche précise. Elle peut recevoir des données (<em>paramètres</em>) et renvoyer un résultat (<em>return</em>).</p>
+                
+                <p><strong>Avantages :</strong></p>
+                <ul>
+                    <li>évite les répétitions de code,</li>
+                    <li>rend le programme plus clair,</li>
+                    <li>permet de réutiliser le même code.</li>
+                </ul>
+                
+                <div class="info-box">
+                    <h4>💻 Zone de programmation</h4>
+                    <p>Tu peux utiliser l'espace Python ci-dessous pour écrire ton code, l'essayer et voir tout de suite si ton programme fonctionne.</p>
+                    <iframe src="https://webtigerpython.ethz.ch/" width="100%" height="400" style="border: 1px solid #ccc; border-radius: 5px; margin: 15px 0;"></iframe>
+                </div>
+                
+                <h3>2. Utiliser une fonction</h3>
+                <p>Python contient déjà des fonctions prêtes à l'emploi :</p>
+                
+                <div class="code-block">
+                    <pre>print("Bonjour")          # affiche Bonjour
+x = int("35")             # transforme une chaîne en entier</pre>
+                </div>
+                
+                <p>La forme générale est :</p>
+                
+                <div class="code-block">
+                    <pre>nom_fonction(param1, param2, ...)</pre>
+                </div>
+                
+                <h3>3. Créer une fonction</h3>
+                <p>La syntaxe pour créer une fonction est :</p>
+                
+                <div class="code-block">
+                    <pre>def nom_fonction(param1, param2):
+    # instructions
+    return resultat</pre>
+                </div>
+                
+                <ul>
+                    <li><code>def</code> : mot-clé pour définir une fonction</li>
+                    <li><code>param1, param2</code> : données envoyées à la fonction</li>
+                    <li><code>return</code> : renvoie un résultat (peut être omis)</li>
+                </ul>
+                
+                <h3>4. Exemple simple</h3>
+                
+                <div class="code-block">
+                    <pre>def cube(nombre):
+    return nombre ** 3
+
+resultat = cube(5)
+print(resultat)   # affiche 125</pre>
+                </div>
+                
+                <h3>5. Fonctions selon les cas</h3>
+                
+                <h4>Sans paramètre, sans résultat</h4>
+                <div class="code-block">
+                    <pre>def bonjour():
+    print("Salut !")</pre>
+                </div>
+                
+                <h4>Sans paramètre, avec résultat</h4>
+                <div class="code-block">
+                    <pre>def donne_un_nombre():
+    return 42</pre>
+                </div>
+                
+                <h4>Avec paramètre, avec résultat</h4>
+                <div class="code-block">
+                    <pre>def carre(n):
+    return n * n</pre>
+                </div>
+                
+                <h4>Avec plusieurs paramètres</h4>
+                <div class="code-block">
+                    <pre>def puissance(base, exposant):
+    return base ** exposant</pre>
+                </div>
+                
+                <h3>6. Variables et portée</h3>
+                <ul>
+                    <li>Une <strong>variable locale</strong> (définie dans une fonction) n'existe qu'à l'intérieur de cette fonction.</li>
+                    <li>Une <strong>variable globale</strong> (définie en dehors) est visible dans la fonction, mais ne peut pas être modifiée directement.</li>
+                </ul>
+                
+                <p>Exemple :</p>
+                
+                <div class="code-block">
+                    <pre>x = 10  # variable globale
+
+def ma_fonction():
+    y = 5  # variable locale
+    print(x)  # Accès à la variable globale : OK
+    print(y)  # Accès à la variable locale : OK
+
+ma_fonction()
+print(x)  # OK : x est globale
+# print(y)  # ERREUR : y n'existe que dans la fonction</pre>
+                </div>
+                
+                            <!-- Section Exercices -->
+            <div class="row g-5">
+                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+                    <h3>7. Exercices pratiques</h3>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 1 : Ma première fonction (Facile)</h4>
+                    <p><strong>a)</strong> Écrivez une fonction <code>dire_bonjour()</code> qui affiche simplement "Bonjour !" quand on l'appelle.</p>
+                    <p><strong>b)</strong> Écrivez une fonction <code>dire_bonjour_nom(nom)</code> qui prend un nom en paramètre et affiche "Bonjour [nom] !"</p>
+                    <p><strong>c)</strong> Testez vos deux fonctions.</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 2 : Calculatrices simples (Facile)</h4>
+                    <p><strong>a)</strong> Écrivez une fonction <code>additionner(a, b)</code> qui retourne la somme de a et b.</p>
+                    <p><strong>b)</strong> Écrivez une fonction <code>multiplier(a, b)</code> qui retourne le produit de a et b.</p>
+                    <p><strong>c)</strong> Testez vos fonctions avec différents nombres.</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 3 : Vérification d'intervalle (Facile)</h4>
+                    <p>Écrivez une fonction qui vérifie si une valeur est dans un certain intervalle.</p>
+                    <p>Par exemple : <code>verifier(47,0,100)</code> renvoie <code>True</code> car 47 est compris entre 0 et 100.</p>
+                    <p>Testez votre fonction pour qu'elle renvoie une fois <code>True</code> et une fois <code>False</code>.</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 4 : Calculs statistiques (Moyen)</h4>
+                    <p><strong>a)</strong> Écrivez une fonction qui prend en paramètre une liste et qui renvoie la somme de ces éléments.</p>
+                    <p><strong>b)</strong> Écrivez une fonction qui prend en paramètre une liste et qui renvoie le nombre d'éléments de la liste.</p>
+                    <p><strong>c)</strong> Écrivez une fonction qui prend en paramètre une liste et qui renvoie la moyenne de ces éléments. Cette fonction doit appeler les deux fonctions précédentes et utiliser leur résultat pour calculer la moyenne des nombres.</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 5 : Traitement de chaînes - Partie 1 (Moyen)</h4>
+                    <p><strong>Information :</strong> Il est possible de parcourir une chaîne de caractère comme on parcourt une liste :</p>
+                    <div class="code-block">
+                        <pre>for lettre in "informatique":
+    print(lettre)</pre>
+                    </div>
+                    
+                    <p><strong>a)</strong> Écrivez une fonction qui prend en paramètre un mot et renvoie le nombre de lettres dans le mot. Testez votre fonction avec au moins 2 mots. Que fait votre fonction si une chaîne de caractère vide lui est passée en paramètre ? Est-ce cohérent ?</p>
+                    
+                    <p><strong>b)</strong> Écrivez une fonction qui prend en paramètre un mot et qui renvoie les voyelles du mot. Par exemple, si le mot "bonjour" est donnée en paramètre, la fonction renvoie "oou". Testez votre fonction avec au moins 2 mots.</p>
+                    <p><strong>Indication :</strong> vous pouvez aussi utiliser la syntaxe suivante :</p>
+                    <div class="code-block">
+                        <pre>if lettre in "aeiou":</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 6 : Jeu de dés (Moyen)</h4>
+                    <p>Écrivez une fonction qui tire deux nombres aléatoires entre 1 et 6 et qui renvoie <code>True</code> si ces nombres sont égaux ou <code>False</code> sinon.</p>
+                    <p>Testez cette fonction 10 fois en utilisant une boucle <code>for</code>.</p>
+                    <p><strong>Rappel :</strong> Pour utiliser les nombres aléatoires, ajoutez <code>import random</code> au début de votre programme et utilisez <code>random.randint(1, 6)</code>.</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 7 : Filtrer les nombres pairs (Moyen)</h4>
+                    <p>Écrivez une fonction qui prend en paramètre une liste de nombres et renvoie une nouvelle liste ne contenant que les nombres pairs de la liste de départ.</p>
+                    <p>Par exemple : <code>listePaire([1,2,3,5,10,11,12])</code> renvoie <code>[2,10,12]</code>.</p>
+                    <p>Testez votre fonction avec au moins 2 listes. Que fait votre fonction si une liste avec que des nombres impairs lui est passée en paramètre ? Est-ce cohérent ?</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🔴 Exercice 8 : Produit d'une liste (Difficile)</h4>
+                    <p>Écrivez une fonction qui prend en paramètre une liste de nombres et renvoie le produit de ces nombres.</p>
+                    <p>Par exemple <code>produit([3,2,-1,5])</code> renvoie <code>-30</code>.</p>
+                    <p>Testez cette fonction avec au moins deux listes différentes. Que fait votre fonction si une liste vide lui est passée en paramètre ? Est-ce cohérent ?</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🔴 Exercice 9 : Traitement de chaînes - Partie 2 (Difficile)</h4>
+                    
+                    <p><strong>a)</strong> Modifiez la fonction de l'exercice 5b pour qu'elle renvoie les voyelles et les consonnes. Testez votre fonction avec au moins 2 mots.</p>
+                    <p><strong>Indication :</strong> pour renvoyer plusieurs valeurs en même temps comme ceci :</p>
+                    <div class="code-block">
+                        <pre>return a, b</pre>
+                    </div>
+                    <p>Et récupérer les valeurs comme ceci :</p>
+                    <div class="code-block">
+                        <pre>res1, res2 = fonction(mot)</pre>
+                    </div>
+                    
+                    <p><strong>b)</strong> (Très difficile) Écrivez une fonction qui prend en paramètre un mot et renvoie le mot écrit à l'envers (par exemple <code>envers('mot')</code> renvoie <code>'tom'</code>). Testez votre fonction avec au moins 2 mots.</p>
+                </div>
+                
+                <h3>8. Bonnes pratiques pour les fonctions</h3>
+                <ul>
+                    <li><strong>Noms explicites :</strong> Donnez aux fonctions des noms clairs et représentatifs (ex. calcul_moyenne, afficher_message).</li>
+                    
+                    <li><strong>Clarté :</strong> Limitez une fonction à une seule tâche précise.</li>
+                    
+                    <li><strong>Paramètres :</strong> Utilisez-les pour rendre vos fonctions réutilisables.</li>
+                    
+                    <li><strong>Commentaires :</strong> Expliquez les fonctions complexes avec une courte description.</li>
+                    
+                    <li><strong>Testez vos fonctions :</strong> Vérifiez qu'elles renvoient bien le résultat attendu avant de les réutiliser.</li>
+                </ul>
+                
+            </div>
+        </div>
+        
+        <!-- Section QCM séparée avec plus d'espacement -->
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mb-5">
+                        <div class="alert alert-info p-4">
+                            <h5 class="mb-3">🎯 Testez vos connaissances !</h5>
+                            <p class="mb-4">Vérifiez votre compréhension du chapitre avec notre QCM de 10 questions.</p>
+                            <a href="{{ url_for('qcm', chapitre=6) }}" class="btn btn-warning btn-lg px-4 py-3">
+                                📝 Faire le QCM du Chapitre 6
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Navigation séparée -->
+        <div class="container mt-4 pt-4">
+            <div class="row">
+                <div class="col-12">
+                    <hr class="mb-4">
+                    <div class="navigation-chapter">
+                        <a href="{{ url_for('chapitre5') }}" class="btn btn-outline-primary btn-lg">← Chapitre 5 : Les listes</a>
+                        <a href="{{ url_for('cours') }}" class="btn btn-success btn-lg">🎓 Sommaire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

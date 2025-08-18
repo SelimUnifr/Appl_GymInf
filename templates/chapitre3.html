@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+
+{% block title %}Chapitre 3 - La Boucle For - Cours Python CSUD{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="chapter-content-page">
+        <h1 class="text-center mb-4">Chapitre 3 : La Boucle For</h1>
+        
+        <div class="row">
+            <div class="col-12">
+                
+                <h2>Introduction</h2>
+                <p>La boucle <code>for</code> permet de répéter un bloc de code un nombre déterminé de fois. C'est l'un des outils les plus puissants en programmation pour automatiser les tâches répétitives.</p>
+                
+                <div class="info-box">
+                    <h4>💻 Zone de programmation</h4>
+                    <p>Tu peux utiliser l'espace Python ci-dessous pour écrire ton code, l'essayer et voir tout de suite si ton programme fonctionne.</p>
+                    <iframe src="https://webtigerpython.ethz.ch/" width="100%" height="400" style="border: 1px solid #ccc; border-radius: 5px; margin: 15px 0;"></iframe>
+                </div>
+                
+                <h3>1. Boucle for avec range()</h3>
+                <p>La fonction <code>range()</code> génère une séquence de nombres :</p>
+                
+                <div class="example-box">
+                    <h4>Exemples de base :</h4>
+                    <div class="code-block">
+                        <pre># Compter de 0 à 4
+for i in range(5):
+    print(f"Tour numéro {i}")
+
+Tour numéro 0
+Tour numéro 1
+Tour numéro 2
+Tour numéro 3
+Tour numéro 4</pre>
+                    </div>
+                </div>
+                
+                <h4>Variations de range() :</h4>
+                <div class="code-block">
+                    <pre># range(stop) : de 0 à stop-1
+for i in range(3):
+    print(i)  # Affiche : 0, 1, 2
+
+# range(start, stop) : de start à stop-1
+for i in range(2, 6):
+    print(i)  # Affiche : 2, 3, 4, 5
+
+# range(start, stop, step) : avec un pas
+for i in range(0, 10, 2):
+    print(i)  # Affiche : 0, 2, 4, 6, 8
+
+# Compter à rebours
+for i in range(10, 0, -1):
+    print(i)  # Affiche : 10, 9, 8, 7, 6, 5, 4, 3, 2, 1</pre>
+                </div>
+                
+                <h3>2. Boucle for avec des chaînes de caractères</h3>
+                <p>Vous pouvez parcourir chaque caractère d'une chaîne :</p>
+                
+                <div class="example-box">
+                    <h4>Parcourir une chaîne :</h4>
+                    <div class="code-block">
+                        <pre>mot = "Python"
+
+for lettre in mot:
+    print(f"Lettre : {lettre}")
+
+Lettre : P
+Lettre : y
+Lettre : t
+Lettre : h
+Lettre : o
+Lettre : n</pre>
+                    </div>
+                </div>
+                
+                <h4>Compter les voyelles :</h4>
+                <div class="code-block">
+                    <pre>phrase = "Bonjour le monde"
+voyelles = "aeiouAEIOU"
+compteur = 0
+
+for lettre in phrase:
+    if lettre in voyelles:
+        compteur += 1
+        print(f"Voyelle trouvée : {lettre}")
+
+print(f"Total de voyelles : {compteur}")</pre>
+                </div>
+                
+                <h3>3. Boucle for avec des listes</h3>
+                <p>Les listes sont des collections d'éléments que vous pouvez parcourir :</p>
+                
+                <div class="code-block">
+                    <pre># Liste de nombres
+nombres = [10, 20, 30, 40, 50]
+
+for nombre in nombres:
+    print(f"Nombre : {nombre}")
+    print(f"Double : {nombre * 2}")
+
+# Liste de noms
+prenoms = ["Alice", "Bob", "Charlie", "Diana"]
+
+for prenom in prenoms:
+    print(f"Bonjour {prenom} !")
+
+# Calculer la somme
+total = 0
+for nombre in nombres:
+    total += nombre
+print(f"Somme totale : {total}")</pre>
+                </div>
+                
+                <h3>4. Boucles imbriquées</h3>
+                <p>Une boucle à l'intérieur d'une autre boucle :</p>
+                
+                <div class="code-block">
+                    <pre># Exemple simple de boucles imbriquées
+for x in range(4):
+    for y in range(4):
+        print((x, y))
+
+# Résultat :
+(0, 0)
+(0, 1)
+(0, 2)
+(0, 3)
+(1, 0)
+(1, 1)
+(1, 2)
+(1, 3)
+(2, 0)
+(2, 1)
+(2, 2)
+(2, 3)
+(3, 0)
+(3, 1)
+(3, 2)
+(3, 3)</pre>
+                </div>
+                
+                <h3>5. Contrôle de flux : break</h3>
+                
+                <p><strong>break :</strong> interrompt immédiatement la boucle, même si toutes les itérations n'ont pas encore été effectuées.</p>
+                <div class="code-block">
+                    <pre># Chercher un nombre spécifique
+nombres = [1, 3, 7, 2, 9, 4]
+cible = 7
+
+for nombre in nombres:
+    if nombre == cible:
+        print(f"Nombre {cible} trouvé !")
+        break
+    print(f"Vérifie : {nombre}")
+
+print("Fin de la recherche")</pre>
+                </div>
+                
+                <h3>6. Exercices pratiques avec range()</h3>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 1 - Nombres de 50 à 59</h4>
+                    <p>Écrire un programme qui affiche les nombres de 50 à 59, dans l'ordre numérique : (50, 51, ...59)</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 2 - Nombres de 0 à 10 inversés</h4>
+                    <p>Écrire un programme qui affiche les nombres de 0 à 10, dans l'ordre numérique inverse : (10, 9, ...0)</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 3 - Nombres pairs inversés</h4>
+                    <p>Écrire un programme qui affiche les 10 nombres pairs, dans l'ordre numérique inverse à partir de 30 : (30, 28, ...12)</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 4 - Rectangle de caractères</h4>
+                    <p>Écrire un programme permettant de réaliser la figure ci-dessous :</p>
+                    <div class="code-block">
+                        <pre>##########
+##########
+##########
+##########
+##########</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟠 Exercice 5 - Triangle de caractères</h4>
+                    <p>Écrire un programme permettant de réaliser la figure ci-dessous :</p>
+                    <div class="code-block">
+                        <pre>
+#
+##
+###
+####
+#####
+######
+#######
+########
+#########
+##########</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🔴 Exercice 6 - Tables de multiplication complètes</h4>
+                    <p>Écrire un programme permettant d'afficher les tables de multiplication de 1 à 10 :</p>
+                    <div class="code-block">
+                        <pre>########
+Table de 1
+1 x 1 = 1
+1 x 2 = 2
+.......
+1 x 10 = 10
+########
+Table de 2
+2 x 1 = 2
+2 x 2 = 4
+.......
+2 x 10 = 20
+etc.....
+########
+Table de 10
+10 x 1 = 10
+10 x 2 = 20
+.......
+10 x 10 = 100</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🔴 Exercice 7 : Analyseur de texte</h4>
+                    <p><strong>Créez un programme qui :</strong></p>
+                    <ul>
+                        <li>Demande une phrase à l'utilisateur</li>
+                        <li>Compte et affiche :</li>
+                        <ul>
+                            <li>Le nombre total de caractères</li>
+                            <li>Le nombre de voyelles</li>
+                            <li>Le nombre de consonnes</li>
+                            <li>Le nombre d'espaces</li>
+                        </ul>
+                        <li>Affiche chaque mot de la phrase sur une ligne séparée</li>
+                    </ul>
+                    
+                    <p><strong>Exemple :</strong></p>
+                    <div class="code-block">
+                        <pre>Phrase : "Bonjour Python"
+Caractères : 14
+Voyelles : 4
+Consonnes : 7
+Espaces : 1
+Mots :
+1. Bonjour
+2. Python</pre>
+                    </div>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🎯 Défis supplémentaires</h4>
+                    <ul>
+                        <li><strong>Générateur de mots de passe :</strong> Créez des mots de passe aléatoires de longueur donnée</li>
+                        <li><strong>Pyramide d'étoiles :</strong> Dessinez une pyramide avec des * (hauteur demandée à l'utilisateur)</li>
+                        <li><strong>Calculateur de moyenne :</strong> Demandez plusieurs notes et calculez la moyenne</li>
+                        <li><strong>Jeu du FizzBuzz :</strong> Pour les nombres de 1 à 100, affichez "Fizz" pour les multiples de 3, "Buzz" pour les multiples de 5, et "FizzBuzz" pour les multiples des deux</li>
+                    </ul>
+                </div>
+                
+                <h3>7. Bonnes pratiques</h3>
+                <ul>
+                    <li><strong>Noms explicites :</strong> Utilisez des noms de variables clairs (<code>for etudiant in etudiants</code>)</li>
+                    <li><strong>Indentation :</strong> Respectez l'indentation</li>
+                    <li><strong>Lisibilité :</strong> Commentez les boucles complexes</li>
+                    <li><strong>Tests :</strong> Vérifiez que vos boucles s'arrêtent correctement</li>
+                </ul>
+                
+            </div>
+        </div>
+        
+        <!-- Section QCM séparée avec plus d'espacement -->
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mb-5">
+                        <div class="alert alert-info p-4">
+                            <h5 class="mb-3">🎯 Testez vos connaissances !</h5>
+                            <p class="mb-4">Vérifiez votre compréhension du chapitre avec notre QCM de 10 questions.</p>
+                            <a href="{{ url_for('qcm', chapitre=3) }}" class="btn btn-warning btn-lg px-4 py-3">
+                                📝 Faire le QCM du Chapitre 3
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Navigation séparée -->
+        <div class="container mt-4 pt-4">
+            <div class="row">
+                <div class="col-12">
+                    <hr class="mb-4">
+                    <div class="navigation-chapter">
+                        <a href="{{ url_for('chapitre2') }}" class="btn btn-outline-primary btn-lg">← Chapitre 2 : Les conditions</a>
+                        <a href="{{ url_for('chapitre4') }}" class="btn btn-primary btn-lg">Chapitre 4 : La boucle while →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

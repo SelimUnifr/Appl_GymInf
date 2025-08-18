@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}ECOURS - Cours Python{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="{% block keywords %}Cours Python Collège du Sud{% endblock %}" name="keywords">
+    <meta content="{% block description %}Cours Python Collège du Sud{% endblock %}" name="description">
+
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Personnalisé -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <a href="{{ url_for('cours') }}" class="logo">
+                        <h1><span class="text-primary">E</span>COURS</h1>
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <div class="info-box">
+                        <i class="fa fa-map-marker-alt"></i>
+                        <div>
+                            <h6>CSUD</h6>
+                            <small>Rue de Dardens 79, 1630 Bulle, Suisse</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="info-box">
+                        <i class="fa fa-envelope"></i>
+                        <div>
+                            <h6>Email</h6>
+                            <small>selim.kairouani@edufr.ch</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="info-box">
+                        <i class="fa fa-phone"></i>
+                        <div>
+                            <h6>Appelez-nous</h6>
+                            <small>+41 78 859 42 65</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="navbar">
+        <div class="container">
+            <div class="navbar-main">
+                <div class="navbar-chapters">
+                    <a href="#" class="chapters-toggle">
+                        <h5><i class="fa fa-book-open"></i> Chapitres</h5>
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <div class="chapters-menu">
+                        <a href="{{ url_for('chapitre1') }}">Chapitre 1 : Les Entrées / Sorties</a>
+                        <a href="{{ url_for('chapitre2') }}">Chapitre 2 : Les conditions</a>
+                        <a href="{{ url_for('chapitre3') }}">Chapitre 3 : La boucle For</a>
+                        <a href="{{ url_for('chapitre4') }}">Chapitre 4 : La boucle while</a>
+                        <a href="{{ url_for('chapitre5') }}">Chapitre 5 : Les listes</a>
+                        <a href="{{ url_for('chapitre6') }}">Chapitre 6 : Les fonctions</a>
+                    </div>
+                </div>
+                <div class="navbar-content">
+                    <div class="nav-links">
+                        <a href="{{ url_for('cours') }}" class="{% if request.endpoint == 'cours' %}active{% endif %}">Cours Python</a>
+                        <a href="{{ url_for('professeur') }}" class="{% if request.endpoint == 'professeur' %}active{% endif %}">Enseignant</a>
+                        <a href="{{ url_for('detail_cours') }}" class="{% if request.endpoint == 'detail_cours' %}active{% endif %}">Détail</a>
+                        <a href="{{ url_for('contact') }}" class="{% if request.endpoint == 'contact' %}active{% endif %}">Contact</a>
+                        {% if session.user_id %}
+                            <a href="{{ url_for('tableau_de_bord') }}" class="{% if request.endpoint == 'tableau_de_bord' %}active{% endif %}">Tableau de bord</a>
+                            <a href="{{ url_for('deconnexion') }}" class="text-danger">Déconnexion</a>
+                        {% else %}
+                            <a href="{{ url_for('connexion') }}" class="{% if request.endpoint == 'connexion' %}active{% endif %}">Connexion</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="flex-rectangle-center" style="min-height: 300px">
+                <h3>{% block page_title %}Cours{% endblock %}</h3>
+                <div class="breadcrumb">
+                    <a href="{{ url_for('cours') }}">Accueil</a>
+                    <i class="fa fa-angle-double-right"></i>
+                    <span>{% block breadcrumb %}Cours{% endblock %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Content Start -->
+    {% block content %}
+    {% endblock %}
+    <!-- Content End -->
+
+    <!-- Footer Start -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>Contact</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Rue de Dardens 79, 1630 Bulle, Suisse</p>
+                    <p><i class="fa fa-phone-alt"></i> +41 78 859 42 65</p>
+                    <p><i class="fa fa-envelope"></i> <a href="mailto:selim.kairouani@edufr.ch?subject=Question sur le cours Python">selim.kairouani@edufr.ch</a></p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h5>À propos</h5>
+                    <p>Ce site propose un cours de Python pour les élèves du Collège du Sud à Bulle. Retrouvez le contenu, les chapitres, l'enseignant et un formulaire de contact.</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <ul class="footer-links">
+                    <li><a href="#">Confidentialité</a></li>
+                    <li><a href="#">Conditions</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Aide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript  -->
+    <script src="{{ url_for('static', filename='js/custom-animations.js') }}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

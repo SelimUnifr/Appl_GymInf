@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block title %}ECOURS - Tableau de bord{% endblock %}
+
+{% block page_title %}Tableau de bord{% endblock %}
+{% block breadcrumb %}Tableau de bord{% endblock %}
+
+{% block content %}
+    
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ 'danger' if category == 'error' else 'success' if category == 'success' else 'info' }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <div class="welcome-section mb-4">
+                        <h2>Bienvenue {{ session.user_email }} !</h2>
+                        <div class="text-end">
+                            <a href="{{ url_for('deconnexion') }}" class="btn btn-outline-secondary">Se déconnecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapitre 1</h5>
+                            <p class="card-text">Les entrées / sorties (input, print)</p>
+                            {% if best_scores and 1 in best_scores %}
+                                <div class="mb-2">
+                                    <span class="badge 
+                                        {% if best_scores[1].score >= 90 %}bg-success
+                                        {% elif best_scores[1].score >= 80 %}bg-primary
+                                        {% elif best_scores[1].score >= 70 %}bg-warning
+                                        {% elif best_scores[1].score >= 60 %}bg-secondary
+                                        {% else %}bg-danger
+                                        {% endif %}">
+                                        QCM: {{ best_scores[1].score }}%
+                                    </span>
+                                </div>
+                            {% endif %}
+                            <a href="{{ url_for('chapitre1') }}" class="btn btn-primary">Commencer</a>
+                            {% if best_scores and 1 in best_scores %}
+                                <a href="{{ url_for('qcm', chapitre=1) }}" class="btn btn-outline-warning btn-sm">Refaire le QCM</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapitre 2</h5>
+                            <p class="card-text">Les conditions (if, elif, else)</p>
+                            {% if best_scores and 2 in best_scores %}
+                                <div class="mb-2">
+                                    <span class="badge 
+                                        {% if best_scores[2].score >= 90 %}bg-success
+                                        {% elif best_scores[2].score >= 80 %}bg-primary
+                                        {% elif best_scores[2].score >= 70 %}bg-warning
+                                        {% elif best_scores[2].score >= 60 %}bg-secondary
+                                        {% else %}bg-danger
+                                        {% endif %}">
+                                        QCM: {{ best_scores[2].score }}%
+                                    </span>
+                                </div>
+                            {% endif %}
+                            <a href="{{ url_for('chapitre2') }}" class="btn btn-primary">Commencer</a>
+                            {% if best_scores and 2 in best_scores %}
+                                <a href="{{ url_for('qcm', chapitre=2) }}" class="btn btn-outline-warning btn-sm">Refaire le QCM</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapitre 3</h5>
+                            <p class="card-text">La boucle for</p>
+                            {% if best_scores and 3 in best_scores %}
+                                <div class="mb-2">
+                                    <span class="badge 
+                                        {% if best_scores[3].score >= 90 %}bg-success
+                                        {% elif best_scores[3].score >= 80 %}bg-primary
+                                        {% elif best_scores[3].score >= 70 %}bg-warning
+                                        {% elif best_scores[3].score >= 60 %}bg-secondary
+                                        {% else %}bg-danger
+                                        {% endif %}">
+                                        QCM: {{ best_scores[3].score }}%
+                                    </span>
+                                </div>
+                            {% endif %}
+                            <a href="{{ url_for('chapitre3') }}" class="btn btn-primary">Commencer</a>
+                            {% if best_scores and 3 in best_scores %}
+                                <a href="{{ url_for('qcm', chapitre=3) }}" class="btn btn-outline-warning btn-sm">Refaire le QCM</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapitre 4</h5>
+                            <p class="card-text">La boucle while</p>
+                            {% if best_scores and 4 in best_scores %}
+                                <div class="mb-2">
+                                    <span class="badge 
+                                        {% if best_scores[4].score >= 90 %}bg-success
+                                        {% elif best_scores[4].score >= 80 %}bg-primary
+                                        {% elif best_scores[4].score >= 70 %}bg-warning
+                                        {% elif best_scores[4].score >= 60 %}bg-secondary
+                                        {% else %}bg-danger
+                                        {% endif %}">
+                                        QCM: {{ best_scores[4].score }}%
+                                    </span>
+                                </div>
+                            {% endif %}
+                            <a href="{{ url_for('chapitre4') }}" class="btn btn-primary">Commencer</a>
+                            {% if best_scores and 4 in best_scores %}
+                                <a href="{{ url_for('qcm', chapitre=4) }}" class="btn btn-outline-warning btn-sm">Refaire le QCM</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapitre 5</h5>
+                            <p class="card-text">Les listes</p>
+                            {% if best_scores and 5 in best_scores %}
+                                <div class="mb-2">
+                                    <span class="badge 
+                                        {% if best_scores[5].score >= 90 %}bg-success
+                                        {% elif best_scores[5].score >= 80 %}bg-primary
+                                        {% elif best_scores[5].score >= 70 %}bg-warning
+                                        {% elif best_scores[5].score >= 60 %}bg-secondary
+                                        {% else %}bg-danger
+                                        {% endif %}">
+                                        QCM: {{ best_scores[5].score }}%
+                                    </span>
+                                </div>
+                            {% endif %}
+                            <a href="{{ url_for('chapitre5') }}" class="btn btn-primary">Commencer</a>
+                            {% if best_scores and 5 in best_scores %}
+                                <a href="{{ url_for('qcm', chapitre=5) }}" class="btn btn-outline-warning btn-sm">Refaire le QCM</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapitre 6</h5>
+                            <p class="card-text">Les fonctions</p>
+                            {% if best_scores and 6 in best_scores %}
+                                <div class="mb-2">
+                                    <span class="badge 
+                                        {% if best_scores[6].score >= 90 %}bg-success
+                                        {% elif best_scores[6].score >= 80 %}bg-primary
+                                        {% elif best_scores[6].score >= 70 %}bg-warning
+                                        {% elif best_scores[6].score >= 60 %}bg-secondary
+                                        {% else %}bg-danger
+                                        {% endif %}">
+                                        QCM: {{ best_scores[6].score }}%
+                                    </span>
+                                </div>
+                            {% endif %}
+                            <a href="{{ url_for('chapitre6') }}" class="btn btn-primary">Commencer</a>
+                            {% if best_scores and 6 in best_scores %}
+                                <a href="{{ url_for('qcm', chapitre=6) }}" class="btn btn-outline-warning btn-sm">Refaire le QCM</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

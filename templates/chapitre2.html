@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+
+{% block title %}Chapitre 2 - Les Conditions - Cours Python CSUD{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="chapter-content-page">
+        <h1 class="text-center mb-4">Chapitre 2 : Les Conditions</h1>
+        
+        <div class="row">
+            <div class="col-12">
+                
+                <h2>Introduction</h2>
+                <p>Les conditions permettent à votre programme de prendre des décisions. Selon certaines circonstances, votre code pourra exécuter différentes actions.</p>
+                
+                <div class="info-box">
+                    <h4>💻 Zone de programmation</h4>
+                    <p>Tu peux utiliser l'espace Python ci-dessous pour écrire ton code, l'essayer et voir tout de suite si ton programme fonctionne.</p>
+                    <iframe src="https://webtigerpython.ethz.ch/" width="100%" height="400" style="border: 1px solid #ccc; border-radius: 5px; margin: 15px 0;"></iframe>
+                </div>
+                
+                <h3>1. La structure if</h3>
+                <p>La condition de base en Python utilise le mot-clé <code>if</code> :</p>
+                
+                <div class="example-box">
+                    <h4>Syntaxe de base :</h4>
+                    <div class="code-block">
+                        <pre>age = int(input("Quel âge avez-vous ? "))
+
+if age >= 18:
+    print("Vous êtes majeur !")
+    print("Vous pouvez voter.")
+    
+print("Ce message s'affiche toujours quel que soit ton âge.")</pre>
+                    </div>
+                    <p><strong>Explication :</strong> Notez l'indentation qui définit le bloc de code à exécuter. L'indentation correspond au décalage vers la droite au début d'une ligne. Ce décalage est obligatoire et indique quelles instructions appartiennent au même bloc.</p>
+                </div>
+                
+                <h3>2. La structure if...else</h3>
+                <p>Pour exécuter une action alternative si la condition n'est pas remplie :</p>
+                
+                <div class="code-block">
+                    <pre>age = int(input("Quel âge avez-vous ? "))
+
+if age >= 18:
+    print("Vous êtes majeur !")
+else:
+    print("Vous êtes mineur.")
+    print(f"Il vous reste {18 - age} ans avant la majorité.")</pre>
+                </div>
+                
+                <h3>3. La structure if...elif...else</h3>
+                <p>Elle permet de tester plusieurs conditions, les unes après les autres, jusqu'à trouver celle qui est vraie.</p>
+                
+                <div class="example-box">
+                    <h4>Exemple : système de notes</h4>
+                    <div class="code-block">
+                        <pre>note = float(input("Entrez votre note sur 6 : "))
+
+if note >= 6:
+    print("Excellent ! Félicitations !")
+    mention = "Excellent"
+elif note >= 5.5:
+    print("Très bien !")
+    mention = "Très bien"
+elif note >= 5:
+    print("Bien !")
+    mention = "Bien"
+elif note >= 4.5:
+    print("Assez bien.")
+    mention = "Assez bien"
+elif note >= 4:
+    print("Passable.")
+    mention = "Passable"
+else:
+    print("Insuffisant...")
+    mention = "Échec"
+    
+print(f"Mention : {mention}")</pre>
+                    </div>
+                </div>
+                
+                <h3>4. Opérateurs de comparaison</h3>
+                <p>Voici les opérateurs que vous pouvez utiliser dans vos conditions :</p>
+                
+                <div class="code-block">
+                    <pre># Opérateurs de comparaison
+==    # Égal à
+!=    # Différent de
+<     # Inférieur à
+<=    # Inférieur ou égal à
+>     # Supérieur à
+>=    # Supérieur ou égal à
+
+# Exemples
+age = 20
+if age == 18:
+    print("Tout juste majeur !")
+    
+nom = "Alice"
+if nom != "Bob":
+    print("Ce n'est pas Bob")
+    
+prix = 25.50
+if prix <= 30:
+    print("Prix abordable")</pre>
+                </div>
+                
+                <h3>5. Opérateurs logiques</h3>
+                <p>Combinez plusieurs conditions avec <code>and</code>, <code>or</code> et <code>not</code> :</p>
+                
+                <div class="example-box">
+                    <h4>Exemples pratiques :</h4>
+                    <div class="code-block">
+                        <pre># AND : toutes les conditions doivent être vraies
+age = 20
+argent = 50
+
+if age >= 18 and argent >= 30:
+    print("Vous pouvez acheter ce produit")
+
+# OR : au moins une condition doit être vraie
+jour = "samedi"
+
+if jour == "samedi" or jour == "dimanche":
+    print("C'est le week-end !")
+
+# NOT : inverse la condition
+pluie = False
+
+if not pluie:
+    print("Pas de pluie, on peut sortir !")
+
+# Combinaisons complexes
+temperature = 25
+vent = False
+
+if temperature > 20 and not vent:
+    print("Parfait pour une sortie !")
+elif temperature > 15 and vent:
+    print("Prendre une veste")
+else:
+    print("Rester à l'intérieur")</pre>
+                    </div>
+                </div>
+                
+                <h3>6. Conditions avec les chaînes de caractères</h3>
+                
+                <div class="code-block">
+                    <pre>mot_de_passe = input("Mot de passe : ")
+
+# Vérification simple
+if mot_de_passe == "secret123":
+    print("Accès autorisé")
+else:
+    print("Accès refusé")
+
+# Vérifications sur le contenu
+nom = input("Votre nom : ")
+
+if len(nom) > 0:  # Vérifie que le nom n'est pas vide
+    print(f"Bonjour {nom}")
+else:
+    print("Vous devez entrer un nom")
+
+# Vérifier si un mot contient une lettre
+if "a" in nom.lower():
+    print("Votre nom contient la lettre 'a'")</pre>
+                </div>
+                
+                <h3>7. Le module random pour les jeux</h3>
+                <p>Pour créer des jeux avec des éléments aléatoires, nous utilisons le module <code>random</code> :</p>
+                
+                <div class="code-block">
+                    <pre># Importer le module random
+import random
+
+# Tirer un nombre au hasard entre 0 et 1
+hasard = random.random()
+print("Nombre tiré :", hasard)
+
+# Tirer un nombre au hasard entre 1 et 6 (comme un dé)
+de = random.randint(1, 6)
+print("Le dé montre :", de)</pre>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟢 Exercice 1 - Un test simple</h4>
+                    <p>Recopier le code ci-dessous et lance-le :</p>
+                    <div class="code-block">
+                        <pre>a = 0
+if a == 0:
+    print("La variable a vaut 0")
+else:
+    print("La variable vaut autre chose...")</pre>
+                    </div>
+                    <p>À la première ligne, modifie la valeur de a, relance le programme et observe le changement</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 2 - Pile ou Face</h4>
+                    <p>Recopier le code ci-dessous :</p>
+                    <div class="code-block">
+                        <pre># On importe le module "random"
+# qui permet de tirer des nombres au hasard
+import random
+
+# On tire un nombre au hasard entre 0 et 1
+hasard = random.randint(0, 1)
+
+# On affiche le nombre tiré</pre>
+                    </div>
+                    <p>Ajouter une ligne à la fin pour afficher à l'écran "Nombre tiré : " suivi de la valeur de la variable hasard</p>
+                    <p>Ajouter du code au programme précédent qui fera :</p>
+                    <p>• Si hasard vaut 0, alors afficher "La pièce est tombée sur pile !"</p>
+                    <p>• Sinon, afficher "La pièce est tombée sur face !"</p>
+                    <p>Ajouter du code au début du programme qui demandera à l'utilisateur sur quoi il veut parier :</p>
+                    <p>• Demander à l'utilisateur "PILE (écrire 0) ou FACE (écrire 1)? "</p>
+                    <p>• Enregistrer ce que l'utilisateur a tapé dans la variable reponse</p>
+                    <p>Ajouter du code à la fin du programme qui dira si le joueur a gagné ou non :</p>
+                    <p>• Si hasard est la même chose que reponse, alors afficher "Tu as gagné !"</p>
+                    <p>• Sinon, afficher "Tu as perdu !"</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟡 Exercice 3 - Jeu de dé</h4>
+                    <p>En t'inspirant de l'exercice "Pile ou Face", essaie de créer un programme qui simulera un jeu de dé.</p>
+                    <p><strong>Ce programme :</strong></p>
+                    <p>• demande à l'utilisateur de choisir un nombre de 1 à 6 et enregistre sa réponse</p>
+                    <p>• tire un nombre au hasard entre 1 et 6 et enregistre ce tirage</p>
+                    <p>• affiche le résultat du tirage (sur quel nombre le dé est tombé)</p>
+                    <p>• affiche si l'utilisateur a gagné ou si c'est perdu</p>
+                    </ul>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟠 Exercice 4 - Pierre-Feuille-Ciseaux</h4>
+                    <p>En t'inspirant des exercices précédents, essaie de créer un programme qui simulera un jeu de Pierre-Feuille-Ciseaux.</p>
+                    <p><strong>Méthode suggérée :</strong></p>
+                    <p>• Commence par écrire un algorithme comme celui de l'exercice "Lancer de dé"</p>
+                    <p>• Dans ton environnement de développement, tape cet algorithme comme un commentaire de code (c'est-à-dire avec des # devant chaque ligne)</p>
+                    <p>• Écris le code des points de l'algorithme que tu sais faire (afficher un texte, demander à l'utilisateur, etc)</p>
+                    <p>• Note en commentaire les points de l'algorithme que tu ne sais pas comment faire</p>
+                    <p>• Cherche dans le cours pour trouver comment faire ce qui te manque</p>
+                    <p>• Enfin essaie de coder le jeu en entier</p>
+                    <p><strong>Aide :</strong> Tu peux associer 0=Pierre, 1=Feuille, 2=Ciseaux</p>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>🟠 Exercice 5 - Calculateur d'IMC</h4>
+                    <p><strong>Créez un programme qui :</strong></p>
+                    <p>• Demande le poids (en kg) et la taille (en m) de l'utilisateur</p>
+                    <p>• Calcule l'IMC (poids / taille²)</p>
+                    <p>• Affiche une interprétation selon les critères :</p>
+                    <p>- IMC < 18.5 : "Insuffisance pondérale"</p>
+                    <p>- 18.5 ≤ IMC < 25 : "Poids normal"</p>
+                    <p>- 25 ≤ IMC < 30 : "Surpoids"</p>
+                    <p>- IMC ≥ 30 : "Obésité"</p>
+                </div>
+                
+                <h3>8. Bonnes pratiques</h3>
+                <p><strong>Indentation :</strong> Respectez une indentation cohérente.</p>
+                <p><strong>Clarté :</strong> Utilisez des noms de variables explicites pour rendre les conditions compréhensibles.</p>
+                <p><strong>Commentaires :</strong> Expliquez les conditions complexes ou non évidentes # en commentaire</p>
+                
+            </div>
+        </div>
+        
+        <!-- Section QCM séparée (à ajouter plus tard) -->
+        <div class="container mt-5 pt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center mb-5">
+                        <div class="alert alert-info p-4">
+                            <h5 class="mb-3">🎯 Testez vos connaissances !</h5>
+                            <p class="mb-4">Vérifiez votre compréhension du chapitre avec notre QCM de 10 questions.</p>
+                            <a href="{{ url_for('qcm', chapitre=2) }}" class="btn btn-warning btn-lg px-4 py-3">
+                                📝 Faire le QCM du Chapitre 2
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Navigation séparée -->
+        <div class="container mt-4 pt-4">
+            <div class="row">
+                <div class="col-12">
+                    <hr class="mb-4">
+                    <div class="navigation-chapter">
+                        <a href="{{ url_for('chapitre1') }}" class="btn btn-outline-primary btn-lg">← Chapitre 1 : Entrées/Sorties</a>
+                        <a href="{{ url_for('chapitre3') }}" class="btn btn-primary btn-lg">Chapitre 3 : La boucle For →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

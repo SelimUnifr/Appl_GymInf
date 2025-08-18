@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Page non trouvée - Site Ginf{% endblock %}
+
+{% block content %}
+<div class="container-xxl py-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="teacher-card">
+                    <h1 class="display-1 text-primary mb-4">404</h1>
+                    <h2 class="mb-4">Page non trouvée</h2>
+                    <p class="mb-4">Désolé, la page que vous recherchez n'existe pas ou a été déplacée.</p>
+                    <p class="text-muted mb-5">Vérifiez l'URL ou utilisez les liens ci-dessous pour naviguer sur le site.</p>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <a href="{{ url_for('cours') }}" class="btn btn-primary btn-lg me-3">
+                                🏠 Retour à l'accueil
+                            </a>
+                            <a href="{{ url_for('cours') }}" class="btn btn-outline-primary btn-lg">
+                                📚 Voir les cours
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
